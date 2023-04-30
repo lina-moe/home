@@ -1,16 +1,18 @@
 <template>
   <component :is="el" class="flex flex-row p-6 space-x-6 items-center font-display" :href="props.href">
-    <img :class="iconClass" :src="props.icon" v-if="props.icon">
-    <h1 :class="nameClass">{{ props.left }}</h1>
-    <h3 :class="valueClass">{{ props.right }}</h3>
+    <slot>
+      <img :class="iconClass" :src="props.icon" v-if="props.icon">
+      <h1 :class="nameClass">{{ props.left }}</h1>
+      <h3 :class="valueClass">{{ props.right }}</h3>
+    </slot>
   </component>
 </template>
 <script setup lang="ts">
 const props = defineProps<{
   icon?: string,
-  left: string,
+  left?: string,
   href?: string,
-  right: string,
+  right?: string,
 
   small?: boolean,
 }>();

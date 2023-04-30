@@ -5,8 +5,8 @@
     <PageSection small left="GitHub" right="@nullium21" href="https://github.com/nullium21" />
     <PageSection small left="Mastodon" right="@lina@tech.lgbt" href="https://tech.lgbt/@lina" />
 
-    <section class="flex flex-row p-6 items-center justify-center">
-      <h1 class="font-display text-2xl">⚠ Website under construction! nya~</h1>
-    </section>
+    <PageSection>
+      <h1 class="font-display text-2xl grow text-center">⚠ Website under construction! nya~</h1>
+    </PageSection>
   </div>
 </template>
