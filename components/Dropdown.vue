@@ -5,9 +5,9 @@
     <label class="flex flex-row" :for="inputId">
       <Heading>{{ props.name }}</Heading>
     </label>
-    <ul class="dropdown-content">
+    <div class="dropdown-content">
       <slot />
-    </ul>
+    </div>
   </div>
 
 </template>
@@ -18,7 +18,7 @@ const props = defineProps<{
 
 const inputId = `dropdown-${Math.random().toString(36).substring(2)}`;
 </script>
-<style lang="postcss">
+<style lang="postcss" scoped>
 input ~ .dropdown-container>.dropdown-content {
   display: none;
 }

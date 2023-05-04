@@ -5,8 +5,19 @@
     <PageSection small left="GitHub" right="@nullium21" href="https://github.com/nullium21" />
     <PageSection small left="Mastodon" right="@lina@tech.lgbt" href="https://tech.lgbt/@lina" />
 
+    <Dropdown name="Projects">
+      <ul>
+        <li v-for="project in projects">{{ project.name }}</li>
+      </ul>
+    </Dropdown>
+
     <PageSection>
       <h1 class="font-display text-2xl grow text-center">⚠ Website under construction! nya~</h1>
     </PageSection>
   </div>
 </template>
+<script setup lang="ts">
+const { $client } = useNuxtApp();
+
+const { data: projects } = await $client.projects.useQuery();
+</script>
