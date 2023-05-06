@@ -10,14 +10,6 @@ import { FetchError } from 'ofetch';
 // Code adapted from trpc-nuxt: client/index.ts
 
 export default defineNuxtPlugin(() => {
-  // const client = createTRPCNuxtClient<AppRouter>({
-  //   links: [
-  //     httpBatchLink({
-  //       url: '/api/trpc',
-  //     }),
-  //   ],
-  // })
-
   const headers = useRequestHeaders();
   const client = createTRPCProxyClient<AppRouter>({
     links: [

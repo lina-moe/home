@@ -1,5 +1,4 @@
 import { procedure, router } from "~/server/trpc";
-// import { createNuxtApiHandler } from 'trpc-nuxt';
 
 import { createURL } from 'ufo';
 import { TRPCError } from "@trpc/server";
@@ -56,7 +55,3 @@ export default defineEventHandler(async (event) => {
   if (headers) Object.keys(headers).forEach(key => res.setHeader(key, headers[key]!));
   return body;
 });
-
-// export default createNuxtApiHandler({
-//   router: appRouter
-// });
