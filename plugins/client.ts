@@ -12,21 +12,25 @@ import { KeyOfRes, PickFrom, _Transform } from 'nuxt/dist/app/composables/asyncD
 
 // Code adapted from trpc-nuxt: client/index.ts
 
-export default defineNuxtPlugin(() => {
+const link = <R extends AnyRouter = AppRouter>(url: string) => {
   const headers = useRequestHeaders();
+  return _httpBatchLink<R>({
+    url,
+    headers() { return headers },
+    fetch: ((input, init?: RequestInit & { method: 'GET' }) =>
+      $fetch.raw(input.toString(), init)
+      .catch(e => {
+        if (e instanceof FetchError && e.response) { return e.response; }
+        throw e;
+      })
+      .then(response => ({ ...response, json: () => Promise.resolve(response._data) }))) as FetchEsque
+  });
+};
+
+export default defineNuxtPlugin(() => {
   const client = createTRPCProxyClient<AppRouter>({
     links: [
-      _httpBatchLink<AppRouter>({
-        url: '/api/trpc',
-        headers() { return headers },
-        fetch: ((input, init?: RequestInit & { method: 'GET' }) =>
-          $fetch.raw(input.toString(), init)
-          .catch(e => {
-            if (e instanceof FetchError && e.response) { return e.response; }
-            throw e;
-          })
-          .then(response => ({ ...response, json: () => Promise.resolve(response._data) }))) as FetchEsque
-      })
+      link('/api/trpc')
     ]
   });
 
