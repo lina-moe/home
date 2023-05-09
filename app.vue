@@ -5,10 +5,8 @@
     <PageSection small left="GitHub" right="@nullium21" href="https://github.com/nullium21" />
     <PageSection small left="Mastodon" right="@lina@tech.lgbt" href="https://tech.lgbt/@lina" />
 
-    <Dropdown name="Projects">
-      <ul>
-        <li v-for="project in projects">{{ project.name }}</li>
-      </ul>
+    <Dropdown name="Projects" content-el="ul" item-el="li" v-slot="dropdown">
+      <component :is="dropdown.item" v-for="project in projects">{{ project.name }}</component>
     </Dropdown>
 
     <PageSection>
