@@ -1,6 +1,6 @@
 <template>
 
-  <input class="hidden" type="checkbox" :id="inputId">
+  <input class="dropdown-checkbox hidden" type="checkbox" :id="inputId">
   <div class="dropdown-container flex flex-col font-display">
     <label class="flex flex-row p-6" :for="inputId">
       <Heading>{{ props.name }}</Heading>
@@ -31,17 +31,17 @@ const item: FunctionalComponent = (_, { slots }) => {
 };
 </script>
 <style lang="postcss" scoped>
-input ~ .dropdown-container>.dropdown-content {
+input.dropdown-checkbox ~ .dropdown-container>.dropdown-content {
   display: none;
 }
 
-input:checked ~ .dropdown-container>.dropdown-content {
+input.dropdown-checkbox:checked ~ .dropdown-container>.dropdown-content {
   display: block;
 }
-input:checked ~ .dropdown-container {
+input.dropdown-checkbox:checked ~ .dropdown-container {
   @apply bg-slate-200;
 }
-input:checked ~ .dropdown-container>.dropdown-content {
+input.dropdown-checkbox:checked ~ .dropdown-container>.dropdown-content {
   @apply bg-slate-300 rounded-xl;
 }
 </style>
