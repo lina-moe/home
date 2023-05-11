@@ -13,7 +13,8 @@ export const appRouter = router({
     .query(() => ([
       {
         name: "lina.moe",
-        desc: "https://lina.moe/"
+        desc: "https://lina.moe/",
+        github: "lina-moe/home"
       }
     ]))
 });
