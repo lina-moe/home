@@ -1,22 +1,17 @@
-import { procedure, router } from "~/server/trpc";
+import { router } from "~/server/trpc";
 
 import { createURL } from 'ufo';
 import { TRPCError } from "@trpc/server";
 import { resolveHTTPResponse } from "@trpc/server/http";
 import { createContext } from "vm";
 
+import projects from "~/server/procedures/projects";
+
 // Code adapted from trpc-nuxt: index.ts
 
 export type AppRouter = typeof appRouter;
 export const appRouter = router({
-  projects: procedure
-    .query(() => ([
-      {
-        name: "lina.moe",
-        desc: "https://lina.moe/",
-        github: "lina-moe/home"
-      }
-    ]))
+  projects
 });
 
 export default defineEventHandler(async (event) => {

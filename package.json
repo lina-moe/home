@@ -15,10 +15,12 @@
     "nuxt": "^3.4.1"
   },
   "dependencies": {
+    "@octokit/rest": "^19.0.7",
     "@trpc/client": "^10.25.0",
     "@trpc/server": "^10.25.0",
     "ofetch": "^1.0.1",
     "ohash": "^1.1.2",
-    "ufo": "^1.1.2"
+    "ufo": "^1.1.2",
+    "yaml": "^2.2.2"
   }
 }
