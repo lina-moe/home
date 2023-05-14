@@ -5,5 +5,8 @@ export default defineNuxtConfig({
     ['@nuxtjs/google-fonts', { families: {
       Comfortaa: true
     } }]
-  ]
+  ],
+  nitro: {
+    preset: 'vercel'
+  }
 })
