@@ -6,9 +6,12 @@
     <PageSection small left="Mastodon" right="@lina@tech.lgbt" href="https://tech.lgbt/@lina" />
 
     <Dropdown name="Projects" content-el="ul" item-el="li" v-slot="dropdown">
-      <component :is="dropdown.item" v-for="project in projects" class="flex flex-col space-y-3">
-        <PageSection small no-padding :left="project.name" :right="project.github ? 'GitHub' : undefined" :href="useGithubLink(project.github)" />
-        <code class="text-xs text-slate-700" v-if="project.desc">{{ project.desc }}</code>
+      <component :is="dropdown.item" v-if="projectsPending">
+        <PageSection no-padding left="Projects loading..." />
+      </component>
+      <component :is="dropdown.item" v-else v-for="project in projects" class="flex flex-col space-y-3">
+        <PageSection small no-padding :left="project.name" :right="project.github && 'GitHub'" :href="project.github && useGithubLink(project.github)" />
+        <code class="text-xs text-slate-700" v-if="project.description">{{ project.description }}</code>
       </component>
     </Dropdown>
 
@@ -20,5 +23,5 @@
 <script setup lang="ts">
 const { $client } = useNuxtApp();
 
-const { data: projects } = await $client.projects.useQuery();
+const { pending: projectsPending, data: projects } = await $client.projects.useQuery();
 </script>
